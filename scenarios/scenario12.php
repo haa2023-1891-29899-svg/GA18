@@ -1,4 +1,7 @@
 <?php
+if (!isset($_GET['id']) || $_GET['id'] === "" || !is_numeric($_GET['id'])) {
+    die("No valid id provided.");
+}
 $id = $_GET['id'];
 
 // WRONG: ID enclosed in quotes but it's an integer
