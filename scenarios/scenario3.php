@@ -5,7 +5,10 @@ $conn = mysqli_connect("localhost","root","","class_db");
 // $age = $_GET['age'];
 // $sql = "SELECT * FROM students WHERE age = $age";
 
-$age = $_GET['age'];
+if (!isset($_GET['age']) || $_GET['age'] === "" || !is_numeric($_GET['age'])) {
+    die("Error: No valid age parameter given in URL.");
+}
+$age = intval($_GET['age']);
 $stmt = $conn->prepare("SELECT * FROM students WHERE age = ?");
 $stmt->bind_param("i", $age);
 $stmt->execute();
