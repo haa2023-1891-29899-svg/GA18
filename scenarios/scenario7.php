@@ -1,11 +1,15 @@
 <?php
 $conn = mysqli_connect("localhost","root","","class_db");
 
-$id = $_POST['id'];
-$email = $_POST['email'];
+$id = isset($_POST['id']) ? $_POST['id'] : null;
+$email = isset($_POST['email']) ? $_POST['email'] : null;
 
 // WRONG: missing quotes, no error checking
 // $sql = "UPDATE students SET email=$email WHERE id=$id";
+
+if (empty($id) || empty($email)) {
+    die("Error: Both id and email must be provided.");
+}
 
 $sql = "UPDATE students SET email='$email' WHERE student_id=$id";
 $res = mysqli_query($conn, $sql);
