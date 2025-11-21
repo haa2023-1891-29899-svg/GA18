@@ -1,8 +1,8 @@
 <?php
 $conn = mysqli_connect("localhost","root","","class_db");
 
-$first = $_POST['fname'];
-$last = $_POST['lname'];
+$first = isset($_POST['fname']) ? $_POST['fname'] : null;
+$last = isset($_POST['lname']) ? $_POST['lname'] : null;
 
 // WRONG: no validation
 // SQL runs even if fields are empty
